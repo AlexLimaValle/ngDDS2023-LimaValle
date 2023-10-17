@@ -46,7 +46,7 @@ export class CursoService {
   deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }
-  findByTitle(nombre: any): Observable<Curso> {
+  findByTitle(nombre: string): Observable<Curso> {
     return this.http.get<Curso>(`${baseUrl}?nombre=${nombre}`);
   }
 }

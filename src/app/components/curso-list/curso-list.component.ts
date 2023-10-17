@@ -50,15 +50,19 @@ export class CursoListComponent implements OnInit {
       });
   }
   searchTitle(): void {
-    this.currentElement = <Curso>{};
+    this.currentElement = {};  //casting tipo Curso
     this.currentIndex = -1;
-    this.cursoService.findByTitle(this.title)
-      .subscribe({
-        next: (data) => {
-          this.currentElement = data;
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-      });
+    if(this.title.length != 0){
+      this.cursoService.findByTitle(this.title)
+        .subscribe({
+          next: (data) => {
+            this.cursos = [data];
+            console.log(this.cursos);
+          },
+          error: (e) => console.error(e)
+        });
+    }else{
+        this.retrieveCursos();
+    }
   }
 }
