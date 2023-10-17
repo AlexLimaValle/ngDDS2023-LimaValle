@@ -12,10 +12,10 @@ const baseUrl = 'http://localhost:4200/api/cursos';
 
 export class CursoService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { } //el constructor se ejecuta cada vez que se usa la clase
   
   getAll(): Observable<Curso[]> {
-    return this.http.get<Curso[]>(baseUrl);
+    return this.http.get<Curso[]>(baseUrl); //petision get
   }
   get(id: any): Observable<Curso> {
     return this.http.get<Curso>(`${baseUrl}/${id}`);

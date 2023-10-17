@@ -15,7 +15,7 @@ export class CursoListComponent implements OnInit {
   title = '';
 
   constructor(private cursoService: CursoService) { }
-  ngOnInit(): void {
+  ngOnInit(): void { //se ejecuta una ves se crea el componente
     this.retrieveCursos();
   }
   
@@ -29,6 +29,7 @@ export class CursoListComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+  
   refreshList(): void {
     this.retrieveCursos();
     this.currentElement = {};

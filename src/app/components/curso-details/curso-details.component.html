@@ -1,4 +1,4 @@
-<div *ngIf="viewMode; else editable">
+<div class="bg-success rounded text-light p-4" *ngIf="viewMode; else editable">
   <div *ngIf="currentElement.id">
     <h4>Instituto educativo - Curso</h4>
     <div>
@@ -16,10 +16,10 @@
       {{ currentElement.tema == null ? "-": currentElement.tema.nombre + " (" + currentElement.tema.id + ")" }}
     </div>    
     <a
-      class="badge badge-warning"
+      class="badge badge-warning p-2"
       routerLink="/cursos/{{ currentElement.id }}"
     >
-      Edit
+      Editar
     </a>
   </div>
   <div *ngIf="!currentElement">

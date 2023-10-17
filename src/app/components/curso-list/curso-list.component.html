@@ -7,7 +7,6 @@
         placeholder="Buscar por title"
         [(ngModel)]="title"
       />
-      <!-- dasdasdsad -->
       <div class="input-group-append">
         <button
           class="btn btn-outline-secondary"
@@ -28,10 +27,14 @@
         [class.active]="i == currentIndex"
         (click)="setActiveElement(curso, i)"
       >
-        {{ curso.nombre }} 
+      <div class="row">
+        <div class="col">
+          {{ curso.nombre }} 
+        </div>
         <div *ngIf="curso.tema">
         	({{ curso.tema.nombre }})
         </div> 
+      </div>
       </li>
     </ul>
     <button class="m-3 btn btn-sm btn-danger" disabled (click)="removeAllElements()">
