@@ -50,7 +50,7 @@ export class CursoListComponent implements OnInit {
       });
   }
   searchTitle(): void {
-    this.currentElement = {};  //casting tipo Curso
+    this.currentElement = <Curso>{};  //casting tipo Curso
     this.currentIndex = -1;
     if(this.title.length != 0){
       this.cursoService.findByTitle(this.title)

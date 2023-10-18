@@ -1,28 +1,38 @@
-<div>
-  <div class="submit-form">
-    <div *ngIf="!submitted">
-      <div class="form-group">
-        <label for="title">Nombre</label>
+<div class="row justify-content-center mt-5">
+  <div class="submit-form col-7">
+    <div *ngIf="!submitted" class="row">
+      <div class="col-12">
+        <label for="nombre" class="form-label lead">Nombre del curso:</label>
         <input
-          type="text"
-          class="form-control"
-          id="title"
-          required
-          [(ngModel)]="curso.nombre"
-          name="title"
-        />
+        type="text"
+        id="nombre"
+        required
+        [(ngModel)]="curso.nombre"
+        name="title"
+        class="form-control"
+        >
       </div>
-      <div class="form-group">
-        <label for="content">Fecha inicio</label>
-        <input
-          class="form-control"
-          id="content"
-          required
-          [(ngModel)]="curso.fechaInicio"
-          name="content"
-        />
+      <div class="mt-2 col-12">
+        <label for="docentes" class="form-label lead p-2">Docente: </label>
+        <select id="docentes" class="form-select" aria-label="Default select example" [(ngModel)]="curso.idDocente">
+          <option selected>Elegir un docente</option>
+          <option value="1">Sergio Viera</option>
+          <option value="2">Santiago Raggazzo</option>
+          <option value="3">Marcelo Badino</option>
+        </select>
       </div>
-      <button (click)="saveCurso()" class="btn btn-success">Submit</button>
+      <div class="col-12 mt-2">
+        <label for="fecha" class="form-label lead">Fecha de inicio:</label>
+        <input type="date" class="form-control" [(ngModel)]="curso.fechaInicio" id="fecha">
+      </div>
+      <div class="mt-2 col-12">
+        <label for="temas" class="form-label lead p-2">Temas: </label>
+        <select id="temas" class="form-select" aria-label="Default select example" [(ngModel)]="curso.idDocente">
+          <option selected>Elegir un tema</option>
+          <option *ngFor="let tema of temas" [value]="tema.id">{{tema.nombre}}</option>
+        </select>
+      </div>   
+      <button (click)="saveCurso()" class="btn btn-success">confirmar</button>
     </div>
     <div *ngIf="submitted">
       <h4>Curso was submitted successfully!</h4>

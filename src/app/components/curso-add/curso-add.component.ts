@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Curso } from 'src/app/models/curso.model';
 import { CursoService } from 'src/app/services/curso.service';
+import { TemaService } from 'src/app/services/temas.service';
+import { Docente } from '../../models/docente.model';
+import { Tema } from 'src/app/models/tema.model';
+import { DocenteService } from '../../services/docente.service';
 
 
 
@@ -18,11 +22,34 @@ export class CursoAddComponent implements OnInit {
             id: 2 //campo obligatorio
         }
   };
+  docentes?:Docente[];
+  temas?:Tema[];
   submitted = false;
   
-  constructor(private cursoService: CursoService) { }
+  constructor(private cursoService: CursoService,private temaService:TemaService,private docenteService:DocenteService) { }
   ngOnInit(): void {
+    this.getAllDocentes();
+    this.getAllTemas();
   }
+
+  
+  getAllDocentes():void{
+    this.docenteService.getAll()
+    .subscribe({
+      next:(data)=>{
+        this.docentes = data;
+        console.log(this.docentes);},
+        error:(e)=>console.error(e)})}
+
+  getAllTemas():void{
+    this.temaService.getAll().
+    subscribe({
+      next:(data)=>{
+        this.temas = data;
+        console.log(this.temas);},
+        error:(e)=>console.error(e)})};
+
+
   saveCurso(): void {
 	const data = {
 		"id": this.curso.id,

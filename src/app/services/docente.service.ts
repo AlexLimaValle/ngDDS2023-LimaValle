@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Curso } from '../models/curso.model';
+import { Docente } from '../models/docente.model';
 
 const baseUrl = 'http://localhost:4200/api/cursos';
 //const baseUrl = 'http://localhost:8080/cursos';
@@ -10,15 +10,15 @@ const baseUrl = 'http://localhost:4200/api/cursos';
   providedIn: 'root'
 })
 
-export class CursoService {
+export class DocenteService {
 
   constructor(private http: HttpClient) { } //el constructor se ejecuta cada vez que se usa la clase
   
-  getAll(): Observable<Curso[]> {
-    return this.http.get<Curso[]>(baseUrl); //petision get
+  getAll(): Observable<Docente[]> {
+    return this.http.get<Docente[]>(baseUrl); //petision get
   }
-  get(id: any): Observable<Curso> {
-    return this.http.get<Curso>(`${baseUrl}/${id}`);
+  get(id: any): Observable<Docente> {
+    return this.http.get<Docente>(`${baseUrl}/${id}`);
   }
   create(data: any): Observable<any> {
 	console.log(data);
@@ -29,14 +29,11 @@ export class CursoService {
 	//formData.append('content', <string>data.content);
     return this.http.post(`${baseUrl}`, data, {responseType: 'text'});
   }
-  update(id: any, data: Curso): Observable<any> {
+  update(id: any, data: Docente): Observable<any> {
 	//Conversione a form data
 	const bodyData = {
 		"id": id,
     	"nombre": data.nombre,
-    	"fechaInicio": data.fechaInicio,
-    	"idDocente": data.idDocente ,
-    	"tema": data.tema
 	};
     return this.http.put(`${baseUrl}`, bodyData, {responseType: 'text'});
   }
@@ -46,7 +43,7 @@ export class CursoService {
   deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }
-  findByTitle(nombre: any): Observable<Curso> {
-    return this.http.get<Curso>(`${baseUrl}?nombre=${nombre}`);
+  findByTitle(nombre: any): Observable<Docente> {
+    return this.http.get<Docente>(`${baseUrl}?nombre=${nombre}`);
   }
 }
