@@ -1,42 +1,54 @@
 <div class="row justify-content-center mt-5">
   <div class="submit-form col-7">
-    <div *ngIf="!submitted" class="row">
-      <div class="col-12">
-        <label for="nombre" class="form-label lead">Nombre del curso:</label>
-        <input
-        type="text"
-        id="nombre"
-        required
-        [(ngModel)]="curso.nombre"
-        name="title"
-        class="form-control"
-        >
+    <div  *ngIf="!submitted"  class="card">
+      <div class="card-header">
+        Formulario
       </div>
-      <div class="mt-2 col-12">
-        <label for="docentes" class="form-label lead p-2">Docente: </label>
-        <select id="docentes" class="form-select" aria-label="Default select example" [(ngModel)]="curso.idDocente">
-          <option selected>Elegir un docente</option>
-          <option value="1">Sergio Viera</option>
-          <option value="2">Santiago Raggazzo</option>
-          <option value="3">Marcelo Badino</option>
-        </select>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <label for="nombre" class="form-label lead">Nombre del curso:</label>
+            <input
+            type="text"
+            id="nombre"
+            required
+            [(ngModel)]="curso.nombre"
+            name="title"
+            class="form-control"
+            >
+          </div>
+          <div class="col-12 mt-2">
+            <label for="fecha" class="form-label lead">Fecha de inicio:</label>
+            <input type="date" class="form-control" [(ngModel)]="curso.fechaInicio" id="fecha">
+          </div>
+          <div class="mt-2 col-12">
+            <label for="docentes" class="form-label lead p-2">Docente: </label>
+            <select id="docentes" class="form-select" aria-label="Default select example" [(ngModel)]="curso.idDocente">
+              <option selected>Elegir un docente</option>
+              <option value="1">Sergio Viera</option>
+              <option value="2">Santiago Raggazzo</option>
+              <option value="3">Marcelo Badino</option>
+            </select>
+          </div>
+          <div class="mt-2 col-12">
+            <label for="temas" class="form-label lead p-2">Temas: </label>
+            <select id="temas" class="form-select" aria-label="Default select example" [(ngModel)]="curso.idDocente">
+              <option selected>Elegir un tema</option>
+              <option *ngFor="let tema of temas" [value]="tema.id">{{tema.nombre}}</option>
+            </select>
+          </div>
+          <div class="btn-group" style="margin-left: 20px;">
+            <button (click)="saveCurso()" class="btn btn-success">confirmar</button>
+            <button class="btn btn-danger" type="reset">Borrar</button>
+          </div>
+        </div>
       </div>
-      <div class="col-12 mt-2">
-        <label for="fecha" class="form-label lead">Fecha de inicio:</label>
-        <input type="date" class="form-control" [(ngModel)]="curso.fechaInicio" id="fecha">
-      </div>
-      <div class="mt-2 col-12">
-        <label for="temas" class="form-label lead p-2">Temas: </label>
-        <select id="temas" class="form-select" aria-label="Default select example" [(ngModel)]="curso.idDocente">
-          <option selected>Elegir un tema</option>
-          <option *ngFor="let tema of temas" [value]="tema.id">{{tema.nombre}}</option>
-        </select>
-      </div>   
-      <button (click)="saveCurso()" class="btn btn-success">confirmar</button>
     </div>
     <div *ngIf="submitted">
-      <h4>Curso was submitted successfully!</h4>
-      <button class="btn btn-success" (click)="newCurso()">Add</button>
+      <div class="alert alert-primary" role="alert">
+        <strong>Curso agregado</strong>
+      </div>
+      <button class="btn btn-primary" (click)="newCurso()">Agregar curso</button>
     </div>
   </div>
 </div>

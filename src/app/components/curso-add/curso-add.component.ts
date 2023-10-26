@@ -4,6 +4,7 @@ import { CursoService } from 'src/app/services/curso.service';
 import { TemaService } from 'src/app/services/temas.service';
 import { Docente } from '../../models/docente.model';
 import { Tema } from 'src/app/models/tema.model';
+import { Material } from 'src/app/models/material.model';
 import { DocenteService } from '../../services/docente.service';
 
 
@@ -22,6 +23,7 @@ export class CursoAddComponent implements OnInit {
             id: 2 //campo obligatorio
         }
   };
+  material?: Material[];
   docentes?:Docente[];
   temas?:Tema[];
   submitted = false;
@@ -61,7 +63,6 @@ export class CursoAddComponent implements OnInit {
     this.cursoService.create(data)
       .subscribe({
         next: (res) => {
-          console.log(res);
           this.submitted = true;
         },
         error: (e) =>
