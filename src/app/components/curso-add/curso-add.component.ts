@@ -17,7 +17,7 @@ import { DocenteService } from '../../services/docente.service';
 export class CursoAddComponent implements OnInit {
   curso: Curso = <Curso>{
     nombre: '',
-    fechaInicio: new Date(),
+    fechaInicio:new Date(),
     idDocente: 1, //campo obligatorio
     tema: {
             id: 2 //campo obligatorio
@@ -60,9 +60,13 @@ export class CursoAddComponent implements OnInit {
     	"idDocente": this.curso.idDocente ,
     	"tema": this.curso.tema
 	};	
+  if(!data.nombre && !data.fechaInicio && !data.idDocente && !data.tema){
+    return;
+  }else{
     this.cursoService.create(data)
       .subscribe({
         next: (res) => {
+          console.log(data);
           this.submitted = true;
         },
         error: (e) =>
@@ -70,6 +74,7 @@ export class CursoAddComponent implements OnInit {
         	console.error(e);
 		} 
       });
+  }
   }
   newCurso(): void {
     this.submitted = false;

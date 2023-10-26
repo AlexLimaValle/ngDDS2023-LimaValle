@@ -37,18 +37,33 @@
               <option *ngFor="let tema of temas" [value]="tema.id">{{tema.nombre}}</option>
             </select>
           </div>
-          <div class="btn-group" style="margin-left: 20px;">
-            <button (click)="saveCurso()" class="btn btn-success">confirmar</button>
+          <div class="btn-group col-3 ms-1 mt-3">
+            <button (click)="saveCurso()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">confirmar</button>
             <button class="btn btn-danger" type="reset">Borrar</button>
           </div>
         </div>
       </div>
     </div>
-    <div *ngIf="submitted">
-      <div class="alert alert-primary" role="alert">
-        <strong>Curso agregado</strong>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Cursos</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="newCurso()"></button>
+          </div>
+          <div class="modal-body">
+            <div *ngIf="submitted;else default">
+              <p class="lead">CURSO AGREGADO</p>
+            </div>
+            <ng-template #default>
+              <p class="text-danger lead">Faltan datos</p>
+            </ng-template>
+          </div>
+          <div class="modal-footer">
+            <button type="button" (click)="newCurso()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
       </div>
-      <button class="btn btn-primary" (click)="newCurso()">Agregar curso</button>
     </div>
   </div>
 </div>
