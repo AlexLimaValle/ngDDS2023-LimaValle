@@ -23,7 +23,7 @@
           </div>
           <div class="mt-2 col-12">
             <label for="docentes" class="form-label lead p-2">Docente: </label>
-            <select id="docentes" class="form-select" aria-label="Default select example" [(ngModel)]="curso.idDocente">
+            <select id="docentes" class="form-select" [(ngModel)]="curso.idDocente">
               <option selected>Elegir un docente</option>
               <option value="1">Sergio Viera</option>
               <option value="2">Santiago Raggazzo</option>
@@ -32,7 +32,7 @@
           </div>
           <div class="mt-2 col-12">
             <label for="temas" class="form-label lead p-2">Temas: </label>
-            <select id="temas" class="form-select" aria-label="Default select example" [(ngModel)]="curso.idDocente">
+            <select id="temas" class="form-select" [(ngModel)]="curso.idDocente">
               <option selected>Elegir un tema</option>
               <option *ngFor="let tema of temas" [value]="tema.id">{{tema.nombre}}</option>
             </select>
