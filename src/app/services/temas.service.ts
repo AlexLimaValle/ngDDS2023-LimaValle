@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Tema } from '../models/tema.model';
 
-const baseUrl = 'http://localhost:4200/api/temas'; 
+// const baseUrl = 'http://localhost:4200/api/temas'; 
 /* probando en el postman
 [
     {
@@ -39,7 +39,7 @@ const baseUrl = 'http://localhost:4200/api/temas';
 ]
 
 */
-//const baseUrl = 'http://localhost:8080/cursos';
+const baseUrl = 'http://localhost:8080/temas';
 
 @Injectable({
   providedIn: 'root'
